@@ -6,5 +6,5 @@ data class CreateUserDTO(
     var firstname: String,
     var lastname: String,
     var description: String? = null,
-    var addressList: List<Long>? =  mutableListOf()
+    val addressList: List<Long>? =  mutableListOf()
 )

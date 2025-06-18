@@ -1,6 +1,7 @@
 package br.com.joaoleo.kotlin_example.entity
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -18,6 +19,6 @@ data class User(
     var lastname: String,
     var description: String? = null,
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    var items: List<Address> = emptyList()
+    @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
+    var items: MutableList<Address> = mutableListOf()
 )
